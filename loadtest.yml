@@ -1,0 +1,13 @@
+config:
+  target: 'http://localhost:3000' 
+  phases:
+    - duration: 60
+      arrivalRate: 100
+scenarios:
+  - flow:
+    - post:
+        url: "/generation"
+        # headers:
+        #   Authorization: "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNscGZyczI5azAwMDFxejB0bTR1aTV3bWgiLCJyb2xlIjoidXNlciIsImlhdCI6MTcwMTAyMjUzNCwiZXhwIjoxNzAxNjI3MzM0LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6IjAwMDAwLTAwMDAwLTAwMDAwLTAwMDAwLTAwMDAwIiwianRpIjoiOTc4ZTZhNGUtZjFmNi00NTliLThjOTgtYjA0MDFjODAwN2VlIn0.AfB-d9-Qn-UT6WUzecH6nBeJ1U39LJE_yDq66scUMNe3okb-kDhYRRKry6NL3AfeVlQKsXYiJo26aPvbX6UTVoSo43xKGtr7S5EofoBB_GZ7R5Uy7g2rI5TCoywfLFgStWImYLuzEYtVaVKf0NSskTVQ-VUe0XySxx1KgDtYrEn5cKSlyNRC6x1Qr0040yh4jBc3BPDOiR6nSYuwn6YKDvdhTg7BmL6FCfvrAvOm7md8Bf7FCxazRZMwjY7jVaWqj_E_xHJqSwYuTeKxGGqdf_DYXtw0k-vT1unrcBTNb2Ia9_qLepx41zvWaRjVnKc5K-MkViRq4hJ_-2_8Z28JX1fBI3-KfQe8nXtmvKIq8BHkXr80RlV3NXqLrVJzXkLk04JmEUrf_z0XywKGnW3WJcxS5cE9wQ8iBO7c5sAwZGCaXjwwHc98C864M1tUSsvIYmrA71m9E1Az9GkV3RAM6qBYDIZ1ahxOHTk2m6Zja4UR7LaqfD5223E6HARXaQZD5fjziEgUMqKrWnjXz4DkBTNGDdg0OuehB5c6v29ESM3r3jw3Nf9pw4rv2D6mdeXva6TUAwPYzEcqo72n-gLPjyNmdx4mk1ltXWBWBn-D1G3vT12x1wOcLF2KBw-BfTWWsx70vfCAlJxXXHX-TMJw6nPEzhL9UvllGuHq1cHeGnw"
+        # json:
+        #   content: "wsjrhgshdgsoldjgsjdhgsldkghsdkjhgasldgkhkjsdgnhsjdh"

@@ -1,0 +1,66 @@
+version: '3.9'
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - --storage.tsdb.retention.time=7d
+      - --config.file=/etc/prometheus/prometheus.yml
+    ports:
+      - '9090:9090'
+
+  node-exporter:
+    image: prom/node-exporter
+    container_name: node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--path.rootfs=/rootfs'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+    ports:
+      - 9100:9100
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: unless-stopped
+    volumes:
+      - grafana_data:/var/lib/grafana
+    links:
+      - prometheus
+    ports:
+      - '3001:3000'
+
+  db:
+    image: postgres
+    restart: always
+    container_name: passmasterdb
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123321
+      POSTGRES_DB: passMaster
+    volumes:
+      - pass-master-postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis
+    restart: always
+    container_name: redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - pass-master-redis_data:/data
+
+volumes:
+  prometheus_data: {}
+  grafana_data: {}
+  pass-master-postgres_data: {}
+  pass-master-redis_data: {}
